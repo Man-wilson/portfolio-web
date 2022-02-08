@@ -1,41 +1,51 @@
-const NavBar = () => {
-    return (
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
-        <nav class="navbar navbar-expand-lg sticky-top navbar-dark text-dark bg-dark">
-             <div class="container-fluid pl-5 ml-4">
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-             </button>
-            
-                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                 <div className="logo">
-                    <a href="re">
-                     Portfo
-                     <span className="spa">lio.</span>
-                      </a>
-                      <br />
-                       <a className="icons pr-2" href="sf" target="__blank">
-                         <i className="fab fa-linkedin">
-                         </i>
-                        </a> 
-                           <a className="icons" href="https://www.instagram.com/pacific001" target="__blank">
-                              <i className="fab fa-instagram">
-                              </i>
-                            </a>
-                  </div>
-                     <div class="navbar-nav nav-text">
-                          <a class="nav-link active" aria-current="page" href="Footer.js">Home</a>
-                          <a class="nav-link active"  href="Footer">About</a>
-                          <a class="nav-link active" href="Experience.js">Experience</a>
-                          <a class="nav-link active" href="Skills">Skills</a>
-                          <a class="nav-link active" href="Work">Projects</a>
-                          <a class="nav-link active"  href="Section.js">Contact</a>
-                      </div>
-                   </div>
-             </div>
-        </nav>
-        
-    );
-}
+const NavBar = () => {
+	const menus = [
+		{ path: '/#home', label: 'Home' },
+		{ path: '/#about', label: 'About' },
+		{ path: '/#experience', label: 'Experience' },
+		{ path: '/#skills', label: 'Skills' },
+		{ path: '/#projects', label: 'Projects' },
+		{ path: '/#contact', label: 'Contact' },
+	];
+	
+	return (
+		<Navbar expand='lg'>
+			<Container>
+				<Navbar.Brand href='#home' className='font-sz-24'>
+					<span className='text-white'>Portfo</span>
+					<span className='spa'>lio.</span>
+				</Navbar.Brand>
+
+				<Navbar.Toggle aria-controls='basic-navbar-nav' />
+
+				<Navbar.Collapse id='basic-navbar-nav'>
+					<Nav className='ml-auto mx-5'>
+						{menus.map((data, key) => (
+							<Nav.Link
+								key={key}
+								href={data.path}
+								className='text-white font-sz-18'
+							>
+								{data.label}
+							</Nav.Link>
+						))}
+					</Nav>
+
+					<Nav>
+						<Nav.Link className='text-white font-sz-18'>
+							<i className='fab fa-linkedin'></i>
+						</Nav.Link>
+
+						<Nav.Link className='text-white font-sz-18'>
+							<i className='fab fa-instagram'></i>
+						</Nav.Link>
+					</Nav>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+	);
+};
 
 export default NavBar;
